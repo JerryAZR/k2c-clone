@@ -222,6 +222,18 @@
 
 ---
 
+## Milestone 19: Spatial Indexing (Optional)
+
+**Goal:** Implement a simple spatial index (for example, a 1D grid along the x-axis) so Greed and archers can find nearby targets without scanning every entity.
+
+**Why optional:** The core game has too few entities to need this. This milestone is purely a demonstration: *“You can do X in Bevy; it is not useful at this scale, but it will be in a much larger game.”* Tutorials are where this kind of overengineering is acceptable, as long as it is framed as a demonstration rather than a requirement.
+
+**Bevy patterns used:** custom `Resource` for the index, systems that rebuild the index from queries, lookup systems, `SystemSet` ordering.
+
+**Result at the end of this milestone:** Targeting uses the spatial index. Performance is unchanged at tutorial scale, but the pattern is shown.
+
+---
+
 ## Developer Cheats
 
 During development we may add temporary cheats to keep iteration fast: infinite gold, accelerated day/night, instant build, etc. These are not milestones; they are added as needed and removed or hidden before release.

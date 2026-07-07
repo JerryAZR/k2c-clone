@@ -232,6 +232,14 @@ These are not Bevy patterns; they are the game mechanics that happen to exercise
 
 ---
 
+## 19. Optional / Advanced Topics
+
+| Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
+|------------------------|----------------------|------------------------------------------|--------------------------|---------|
+| Optimize large-scale entity queries with spatial indexing | Custom `Resource` + `Query` + `SystemSet` ordering (e.g. grid, spatial hash, or quadtree) | Optional milestone: Greed/archer targeting with a 1D x-axis grid. | Not a Bevy built-in; build it from scratch. | |
+
+---
+
 ## Episode Planning Worksheet (to fill in later)
 
 | Episode | Gamedev Task / Pattern | Bevy API Focus | Notes |
