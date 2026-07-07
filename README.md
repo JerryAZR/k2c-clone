@@ -24,7 +24,7 @@ You play as a monarch on horseback. Ride across a generated island, drop coins t
 
 - **Engine:** Bevy 0.19
 - **Language:** Rust 1.96+
-- **Edition:** 2024
+- **Rust Edition:** 2024
 
 ## Build and run
 
