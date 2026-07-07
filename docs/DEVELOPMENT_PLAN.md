@@ -68,20 +68,160 @@
 
 ---
 
-## Milestones 6+
+## Milestone 6: Builder Job
 
-Intentionally left blank. The next batch will be planned after the first five milestones are implemented and their actual scope is known.
+**Goal:** Lead an idle villager to a builder camp and assign them the builder job.
 
-Likely upcoming areas (not yet ordered):
+**Why next:** First job; builders are the foundation for harvesting and construction.
 
-- Villager jobs (builder, archer, farmer, knight)
-- Trees, harvesting, and forest regrowth
-- Walls, farms, towers, and upgrade tiers
-- The Greed: AI, night waves, escalation, blood moon
-- Archers, arrows, and melee combat
-- Crown loss and game over
-- Save / load
-- Boat travel and new islands
-- Sound, music, particles, screenshake
-- Menus, pause, and game over screen
-- Optional local/online co-op
+**Bevy patterns used:** enum `Job` component, job state machine, `bsn!` tool-camp scene, proximity detection, component swapping.
+
+**Result at the end of this milestone:** A villager becomes a builder and can be given construction or harvesting tasks.
+
+---
+
+## Milestone 7: Trees and Harvesting
+
+**Goal:** Builders chop trees for coins; forests regenerate over time.
+
+**Why next:** Builders need a simple job before they can construct complex buildings.
+
+**Bevy patterns used:** `Timer`, resource health, events, spawning coins, regrowth scheduling.
+
+**Result at the end of this milestone:** Builders harvest trees, coins drop, and trees regrow after a delay.
+
+---
+
+## Milestone 8: Walls
+
+**Goal:** Builders construct defensive walls from build sites; upgrade tiers.
+
+**Why next:** First building type; walls are needed before archers can defend and before Greed can attack.
+
+**Bevy patterns used:** `BuildSite`, `ConstructionProgress`, upgrade tiers, `SceneComponent`.
+
+**Result at the end of this milestone:** Place a wall build site; a builder walks over and finishes it.
+
+---
+
+## Milestone 9: Archer Job
+
+**Goal:** Lead a villager to an archer camp to make an archer. Archers hunt critters during the day.
+
+**Why next:** Introduces targeting and shooting logic in a safe daytime context before Greed exist. Hunting logic is complex enough to be its own milestone.
+
+**Bevy patterns used:** projectile, targeting, fire-rate timer, `DelayedCommands`, collision.
+
+**Result at the end of this milestone:** Archers automatically shoot nearby critters during the day.
+
+---
+
+## Milestone 10: Towers
+
+**Goal:** Builders construct archer towers; archers can occupy them for extra range.
+
+**Why next:** Towers do not make sense without archers. Once archers exist, giving them a defensive position makes them much more useful.
+
+**Bevy patterns used:** building upgrade chain, `SceneComponent`, entity occupation/slots.
+
+**Result at the end of this milestone:** Archers can occupy towers for extra range.
+
+---
+
+## Milestone 11: Farmers and Farms
+
+**Goal:** Lead a villager to a farm camp to make a farmer. Farms generate coins during the day; farmers return to safety at night.
+
+**Why here:** Adds economy and reinforces that day/night affects friendly NPC behavior before combat pressure.
+
+**Bevy patterns used:** state-dependent NPC behavior, farm income timer, `DayState`/`NightState` gating.
+
+**Result at the end of this milestone:** Farms produce coins during the day; farmers hide at night.
+
+---
+
+## Milestone 12: The Greed
+
+**Goal:** Night spawns waves of Greed from one side; they move toward the crown and attack walls.
+
+**Why next:** Once walls and archers exist, enemies give them a purpose.
+
+**Bevy patterns used:** `NightState`, spawning, basic AI, wave escalation, random attack direction.
+
+**Result at the end of this milestone:** Greed appear at night and move toward the monarch.
+
+---
+
+## Milestone 13: Defense and Crown Loss
+
+**Goal:** Archers shoot Greed at night; walls take damage; crown loss ends the game.
+
+**Why next:** Reuses the archer shooting logic from milestone 9 against real threats.
+
+**Bevy patterns used:** projectile reuse, health/damage, `Observer`, `GameOver` state.
+
+**Result at the end of this milestone:** Archers defend, walls break, and the crown can be lost.
+
+---
+
+## Milestone 14: Menus, Pause, and UI
+
+**Goal:** Main menu, pause overlay, game over screen, polished HUD.
+
+**Why here:** Proper menu and pause flow makes testing and save/load much easier.
+
+**Bevy patterns used:** `State`, `OnEnter`/`OnExit`, `Button`, `Interaction`, UI layout.
+
+**Result at the end of this milestone:** Complete menu and pause flow.
+
+---
+
+## Milestone 15: Save and Load
+
+**Goal:** Persist the kingdom between play sessions.
+
+**Why here:** Core loop is complete; now we can learn about save compatibility and migration.
+
+**Bevy patterns used:** `serde`, `AppTypeRegistry`, serialization, filtering transient entities.
+
+**Result at the end of this milestone:** Save on exit and load on startup.
+
+---
+
+## Milestone 16: Boat and Islands
+
+**Goal:** Builders construct a boat; travel to a new generated island; carry over upgrades.
+
+**Why next:** Endgame progression after one island is stable.
+
+**Bevy patterns used:** `SubStates`, resource carry-over, world unloading, seeded regeneration.
+
+**Result at the end of this milestone:** Build a boat, sail to a new island.
+
+---
+
+## Milestone 17: Audio, Particles, and Screenshake
+
+**Goal:** Music, sound effects, particle effects, screenshake.
+
+**Why next:** Final polish.
+
+**Bevy patterns used:** `AudioPlayer`, `PlaybackSettings`, particle spawning, timers.
+
+**Result at the end of this milestone:** The game feels finished.
+
+---
+
+## Milestone 18: Co-op (Optional)
+
+**Goal:** Local or online co-op with two monarchs.
+
+**Why optional:** Large scope; likely a separate mini-series.
+
+**Bevy patterns used:** input mapping, shared camera, networking.
+
+---
+
+## Developer Cheats
+
+During development we may add temporary cheats to keep iteration fast: infinite gold, accelerated day/night, instant build, etc. These are not milestones; they are added as needed and removed or hidden before release.
