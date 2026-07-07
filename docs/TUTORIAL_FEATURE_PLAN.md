@@ -103,8 +103,8 @@
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
-| Sprite sheet animation | `TextureAtlas` + `Timer` | Monarch running, horse galloping, villager working, Greed walking. | In 0.19, `TextureAtlas` is a separate component, not a `Sprite` field. | |
-| Flip a sprite to face direction | `Sprite.flip_x` | Monarch, villagers, enemies face left/right. | Verify field name. | |
+| Sprite sheet animation | `Sprite.texture_atlas` (`Option<TextureAtlas>`) + `TextureAtlasLayout` asset + `Timer` | Monarch running, horse galloping, villager working, Greed walking. | In 0.19 `TextureAtlas` is a *field on `Sprite`*, not a component. `TextureAtlas { layout: Handle<TextureAtlasLayout>, index: usize }`; the layout is an asset in `Assets<TextureAtlasLayout>` built via `from_grid`. Both live in `bevy_image`. | |
+| Flip a sprite to face direction | `Sprite.flip_x` | Monarch, villagers, enemies face left/right. | Verified in 0.19: `Sprite.flip_x: bool` exists. | |
 | Animate child sprites independently | Child `Transform` + `Sprite` animation | Horse legs, monarch cloak. | | |
 | Simple procedural animation (tweens) | Manual `Transform` / `Scale` interpolation | Coin bounce, building placement bounce, screenshake. | | |
 
