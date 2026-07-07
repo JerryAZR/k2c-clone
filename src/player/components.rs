@@ -9,6 +9,8 @@
 use bevy::prelude::*;
 
 /// Marker component for the player-controlled monarch.
+///
+/// Intentionally minimal: the `Sprite` we spawn alongside it already requires
+/// `Transform` and `Visibility`, so this marker only carries identity.
 #[derive(Component, Default)]
-#[require(Transform, Visibility)]
 pub struct Player;
