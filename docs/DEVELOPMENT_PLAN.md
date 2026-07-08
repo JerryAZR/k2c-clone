@@ -187,21 +187,7 @@
 
 ---
 
-## Milestone 15: Localization
-
-**Goal:** Move all UI strings into a localization system and switch languages at runtime.
-
-**Why here:** Enough UI text to demonstrate; contained surface before save/load and boat travel.
-
-**Bevy patterns used:** Asset-based string tables or localization crate (e.g. bevy_fluent), runtime language switching, parameterized strings.
-
-**Result at the end of this milestone:** Menu and HUD text comes from a locale file; player can switch languages.
-
-**Note:** Bevy 0.19 has no built-in localization; verify crate compatibility or use custom asset-based system.
-
----
-
-## Milestone 16: Menus, Pause, and UI
+## Milestone 15: Menus, Pause, and UI
 
 **Goal:** Main menu, pause overlay, game over screen, polished HUD.
 
@@ -210,6 +196,20 @@
 **Bevy patterns used:** `State`, `OnEnter`/`OnExit`, `Button`, `Interaction`, UI layout.
 
 **Result at the end of this milestone:** Complete menu and pause flow.
+
+---
+
+## Milestone 16: Localization
+
+**Goal:** Move all UI strings into a localization system and switch languages at runtime.
+
+**Why here:** After menus and HUD exist, there is enough UI text to demonstrate localization. It is a contained surface before save/load and boat travel add more systems.
+
+**Bevy patterns used:** Asset-based string tables or localization crate (e.g. `bevy_fluent`), runtime language switching, parameterized strings.
+
+**Result at the end of this milestone:** Menu and HUD text comes from a locale file; the player can switch languages.
+
+**Note:** Bevy 0.19 has no built-in localization; verify crate compatibility or use a custom asset-based system.
 
 ---
 

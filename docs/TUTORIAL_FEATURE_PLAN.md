@@ -141,7 +141,7 @@
 | Buttons and click handling | `Button` + `Interaction` | Main menu, resume, restart, quit. | | |
 | Style UI nodes (background, border) | `BackgroundColor`, `BorderColor` | HUD panels, menu panels, button highlights. | | |
 | Responsive UI for different window sizes | Relative `Val` units and flex | HUD stays anchored. | | |
-| Localize UI text | Asset-based string table or localization crate | M15 | Bevy 0.19 has no built-in localization; verify crate support. | |
+| Localize UI text | Asset-based string table or localization crate | M16 | Bevy 0.19 has no built-in localization; verify crate support. | |
 
 ---
 
