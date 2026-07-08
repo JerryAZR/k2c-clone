@@ -187,7 +187,21 @@
 
 ---
 
-## Milestone 15: Menus, Pause, and UI
+## Milestone 15: Localization
+
+**Goal:** Move all UI strings into a localization system and switch languages at runtime.
+
+**Why here:** Enough UI text to demonstrate; contained surface before save/load and boat travel.
+
+**Bevy patterns used:** Asset-based string tables or localization crate (e.g. bevy_fluent), runtime language switching, parameterized strings.
+
+**Result at the end of this milestone:** Menu and HUD text comes from a locale file; player can switch languages.
+
+**Note:** Bevy 0.19 has no built-in localization; verify crate compatibility or use custom asset-based system.
+
+---
+
+## Milestone 16: Menus, Pause, and UI
 
 **Goal:** Main menu, pause overlay, game over screen, polished HUD.
 
@@ -199,7 +213,7 @@
 
 ---
 
-## Milestone 16: Save and Load
+## Milestone 17: Save and Load
 
 **Goal:** Persist the kingdom between play sessions.
 
@@ -211,7 +225,7 @@
 
 ---
 
-## Milestone 17: Boat and Islands
+## Milestone 18: Boat and Islands
 
 **Goal:** Builders construct a boat; travel to a new generated island; carry over upgrades.
 
@@ -223,7 +237,7 @@
 
 ---
 
-## Milestone 18: Audio, Particles, and Screenshake
+## Milestone 19: Audio, Particles, and Screenshake
 
 **Goal:** Music, sound effects, particle effects, screenshake.
 
@@ -235,7 +249,7 @@
 
 ---
 
-## Milestone 19: Co-op (Optional)
+## Milestone 20: Co-op (Optional)
 
 **Goal:** Local or online co-op with two monarchs.
 
@@ -245,7 +259,7 @@
 
 ---
 
-## Milestone 20: Spatial Indexing (Optional)
+## Milestone 21: Spatial Indexing (Optional)
 
 **Goal:** Implement a simple spatial index (for example, a 1D grid along the x-axis) so Greed and archers can find nearby targets without scanning every entity.
 
