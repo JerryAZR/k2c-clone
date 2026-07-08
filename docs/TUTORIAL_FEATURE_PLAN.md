@@ -27,7 +27,18 @@
 
 ---
 
-## 2. Spawning Objects (Entities / Prefabs / Scenes)
+## 2. Testing and CI
+
+| Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
+|------------------------|----------------------|------------------------------------------|--------------------------|---------|
+| Write Bevy tests using App | Build an `App` in tests, add plugins/systems, call `app.update()`, assert on world state | Test monarch movement, sprite flip, and component spawning from M1. | Use `MinimalPlugins` or feature-gate rendering; avoid needing a real window. | |
+| Run CI for Bevy projects (headless/minimal features) | Configure GitHub Actions / CI with a headless Bevy feature set and software rendering | Project CI runs on every push. | Disable `bevy_audio`/`bevy_render` or use `x11`/`wayland` dummy if needed. | |
+| Use cargo check/clippy/test/fmt in CI | Standard toolchain checks in CI pipeline | All Rust code in the project. | Fail fast on `cargo check` before tests. | |
+| Keep tests for deterministic logic | Test movement math, state transitions, resource values; avoid frame-time assertions | Player movement, coin purse logic, day/night state transitions. | Use `Time` resource manually or `FixedUpdate` in tests. | |
+
+---
+
+## 3. Spawning Objects (Entities / Prefabs / Scenes)
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -41,7 +52,7 @@
 
 ---
 
-## 3. Hierarchies & Transforms
+## 4. Hierarchies & Transforms
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -52,7 +63,7 @@
 
 ---
 
-## 4. Camera
+## 5. Camera
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -64,7 +75,7 @@
 
 ---
 
-## 5. State Management
+## 6. State Management
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -77,7 +88,7 @@
 
 ---
 
-## 6. Input Handling
+## 7. Input Handling
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -88,7 +99,7 @@
 
 ---
 
-## 7. Timing, Timers & Delays
+## 8. Timing, Timers & Delays
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -99,7 +110,7 @@
 
 ---
 
-## 8. Animation
+## 9. Animation
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -110,7 +121,7 @@
 
 ---
 
-## 9. Asset Loading
+## 10. Asset Loading
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -120,7 +131,7 @@
 
 ---
 
-## 10. UI
+## 11. UI
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -133,7 +144,7 @@
 
 ---
 
-## 11. Audio
+## 12. Audio
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -144,7 +155,7 @@
 
 ---
 
-## 12. Event-Driven & Reactive Systems
+## 13. Event-Driven & Reactive Systems
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -156,7 +167,7 @@
 
 ---
 
-## 13. Queries, Filtering & ECS Logic
+## 14. Queries, Filtering & ECS Logic
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -169,7 +180,7 @@
 
 ---
 
-## 14. Save / Load & Serialization
+## 15. Save / Load & Serialization
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -183,7 +194,7 @@
 
 ---
 
-## 15. Randomness & Procedural Generation
+## 16. Randomness & Procedural Generation
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -193,7 +204,7 @@
 
 ---
 
-## 16. Lightweight 2D Physics & Collision
+## 17. Lightweight 2D Physics & Collision
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -204,7 +215,7 @@
 
 ---
 
-## 17. Debugging & Developer Experience
+## 18. Debugging & Developer Experience
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|
@@ -214,7 +225,7 @@
 
 ---
 
-## 18. Game-Specific Mechanisms (Demonstration Only, Not Teaching Focus)
+## 19. Game-Specific Mechanisms (Demonstration Only, Not Teaching Focus)
 
 These are not Bevy patterns; they are the game mechanics that happen to exercise the patterns above. They exist so the project is a complete game, not because a Unity/Godot developer needs to learn “how to gallop” in Bevy.
 
@@ -232,7 +243,7 @@ These are not Bevy patterns; they are the game mechanics that happen to exercise
 
 ---
 
-## 19. Optional / Advanced Topics
+## 20. Optional / Advanced Topics
 
 | Gamedev Task / Pattern | How to do it in Bevy | Where We Demonstrate It (Game Context) | 0.19 Specifics / Gotchas | Episode |
 |------------------------|----------------------|------------------------------------------|--------------------------|---------|

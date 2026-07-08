@@ -18,11 +18,34 @@
 
 ---
 
-## Milestone 2: A Generated Island
+## Milestone 2: Testing and CI Setup
+
+**Goal:** Set up automated testing and continuous integration so every milestone starts from a verified, reproducible baseline.
+
+**Why early:** A single controllable player is the first code worth testing. Adding CI now—before the project grows—keeps build, test, and format checks cheap and habitual.
+
+**Bevy patterns used:** `App` in test mode, `MinimalPlugins` / `DefaultPlugins` with headless features, `app.update()`, `commands`, `Query`, `assert!` on component state, `cargo test`.
+
+**Testing focus:**
+- Write unit tests for deterministic systems (movement math, animation state, sprite flipping).
+- Use `App` to run startup and update schedules in tests.
+- Test M1 code: player spawns with expected components, velocity matches input, sprite flips with direction.
+- Keep tests fast and deterministic: avoid real-time waits, use fixed timesteps or direct state assertions.
+
+**CI setup:**
+- Run `cargo check`, `cargo clippy`, `cargo test`, and `cargo fmt --check` on every push.
+- Use a headless/minimal-features Bevy configuration in CI so tests run without a GPU or window server.
+- Pin the Rust toolchain and cache dependencies for fast feedback.
+
+**Result at the end of this milestone:** Every push is checked for compilation, formatting, clippy warnings, and a growing suite of Bevy tests. M1 behavior is covered by tests.
+
+---
+
+## Milestone 3: A Generated Island
 
 **Goal:** Generate a simple side-scrolling island from a seed, so the player can walk around and see different terrain.
 
-**Why second:** Movement needs a world to move through. Once the player can ride, the next natural step is to give them an island to ride across.
+**Why third:** Movement needs a world to move through. Once the player can ride, the next natural step is to give them an island to ride across.
 
 **Bevy patterns used:** `Resource` (`WorldSeed`), `rand` + `SeedableRng`, `Commands`, `Query`, `Transform`, `Sprite`, asset loading.
 
@@ -30,7 +53,7 @@
 
 ---
 
-## Milestone 3: Day and Night
+## Milestone 4: Day and Night
 
 **Goal:** A global day/night cycle that tints the world and drives a “day” / “night” state.
 
@@ -42,7 +65,7 @@
 
 ---
 
-## Milestone 4: Coins and the Purse
+## Milestone 5: Coins and the Purse
 
 **Goal:** The monarch can drop coins on the ground and pick them back up; a HUD shows the coin count.
 
@@ -54,7 +77,7 @@
 
 ---
 
-## Milestone 5: The Campfire and Wanderers
+## Milestone 6: The Campfire and Wanderers
 
 **Goal:** Mirror the Kingdom Two Crowns recruitment flow: wanderers appear at the campfire over time; the monarch drops a coin near a wanderer; the wanderer picks it up and transforms into an idle villager.
 
@@ -68,7 +91,7 @@
 
 ---
 
-## Milestone 6: Builder Job
+## Milestone 7: Builder Job
 
 **Goal:** Lead an idle villager to a builder camp and assign them the builder job.
 
@@ -80,7 +103,7 @@
 
 ---
 
-## Milestone 7: Trees and Harvesting
+## Milestone 8: Trees and Harvesting
 
 **Goal:** Builders chop trees for coins; forests regenerate over time.
 
@@ -92,7 +115,7 @@
 
 ---
 
-## Milestone 8: Walls
+## Milestone 9: Walls
 
 **Goal:** Builders construct defensive walls from build sites; upgrade tiers.
 
@@ -104,7 +127,7 @@
 
 ---
 
-## Milestone 9: Archer Job
+## Milestone 10: Archer Job
 
 **Goal:** Lead a villager to an archer camp to make an archer. Archers hunt critters during the day.
 
@@ -116,7 +139,7 @@
 
 ---
 
-## Milestone 10: Towers
+## Milestone 11: Towers
 
 **Goal:** Builders construct archer towers; archers can occupy them for extra range.
 
@@ -128,7 +151,7 @@
 
 ---
 
-## Milestone 11: Farmers and Farms
+## Milestone 12: Farmers and Farms
 
 **Goal:** Lead a villager to a farm camp to make a farmer. Farms generate coins during the day; farmers return to safety at night.
 
@@ -140,7 +163,7 @@
 
 ---
 
-## Milestone 12: The Greed
+## Milestone 13: The Greed
 
 **Goal:** Night spawns waves of Greed from one side; they move toward the crown and attack walls.
 
@@ -152,11 +175,11 @@
 
 ---
 
-## Milestone 13: Defense and Crown Loss
+## Milestone 14: Defense and Crown Loss
 
 **Goal:** Archers shoot Greed at night; walls take damage; crown loss ends the game.
 
-**Why next:** Reuses the archer shooting logic from milestone 9 against real threats.
+**Why next:** Reuses the archer shooting logic from milestone 10 against real threats.
 
 **Bevy patterns used:** projectile reuse, health/damage, `Observer`, `GameOver` state.
 
@@ -164,7 +187,7 @@
 
 ---
 
-## Milestone 14: Menus, Pause, and UI
+## Milestone 15: Menus, Pause, and UI
 
 **Goal:** Main menu, pause overlay, game over screen, polished HUD.
 
@@ -176,7 +199,7 @@
 
 ---
 
-## Milestone 15: Save and Load
+## Milestone 16: Save and Load
 
 **Goal:** Persist the kingdom between play sessions.
 
@@ -188,7 +211,7 @@
 
 ---
 
-## Milestone 16: Boat and Islands
+## Milestone 17: Boat and Islands
 
 **Goal:** Builders construct a boat; travel to a new generated island; carry over upgrades.
 
@@ -200,7 +223,7 @@
 
 ---
 
-## Milestone 17: Audio, Particles, and Screenshake
+## Milestone 18: Audio, Particles, and Screenshake
 
 **Goal:** Music, sound effects, particle effects, screenshake.
 
@@ -212,7 +235,7 @@
 
 ---
 
-## Milestone 18: Co-op (Optional)
+## Milestone 19: Co-op (Optional)
 
 **Goal:** Local or online co-op with two monarchs.
 
@@ -222,7 +245,7 @@
 
 ---
 
-## Milestone 19: Spatial Indexing (Optional)
+## Milestone 20: Spatial Indexing (Optional)
 
 **Goal:** Implement a simple spatial index (for example, a 1D grid along the x-axis) so Greed and archers can find nearby targets without scanning every entity.
 
