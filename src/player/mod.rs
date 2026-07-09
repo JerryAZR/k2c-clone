@@ -11,6 +11,7 @@
 pub mod components;
 
 use crate::animation::SpriteAnimation;
+use crate::world::HORIZON_Y;
 use bevy::image::{TextureAtlas, TextureAtlasLayout};
 use bevy::prelude::*;
 use std::time::Duration;
@@ -56,6 +57,6 @@ fn spawn_player(
             texture_atlas: Some(TextureAtlas { layout, index: 0 }),
             ..default()
         },
-        Transform::default(),
+        Transform::from_xyz(0.0, HORIZON_Y + FRAME_SIZE as f32 / 2.0, 0.0),
     ));
 }
