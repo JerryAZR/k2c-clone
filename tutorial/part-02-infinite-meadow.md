@@ -1,8 +1,6 @@
 # Part 2: The Infinite Meadow — World-Pinned Background
 
-> **Time to read:** ~15 minutes
 > **New concepts:** `Window`, `OrthographicProjection`, `ScalingMode`, `Projection`, `Camera2d`, `Resource`, marker components, infinite tiling
-> **Prerequisite:** Part 1 (idle monarch + shared animation engine)
 
 ---
 
@@ -144,8 +142,8 @@ And `src/world/background.rs` with the constants and shared calculations:
 // src/world/background.rs
 use bevy::prelude::*;
 
-const BG_WIDTH: f32 = 1800.0;
-const BG_HEIGHT: f32 = 1200.0;
+const BG_WIDTH: f32 = 2304.0;
+const BG_HEIGHT: f32 = 1296.0;
 const HORIZON_RATIO: f32 = 0.35; // from the bottom of the image
 
 pub const VIEWPORT_HEIGHT: f32 = 720.0;
@@ -210,7 +208,7 @@ bevy = "0.19.0"
 A few notes on the spawn code:
 
 - The replacement image is `Summer2.png` (2304×1296 in this example). Update `BG_WIDTH` and `BG_HEIGHT` if your replacement asset has different dimensions.
-- The sprite center is at `y = 0`, so the scaled background extends from `-BG_HEIGHT * bg_scale / 2` to `+BG_HEIGHT * bg_scale / 2`, i.e. roughly `-648` to `+648`. The horizon is at `-648 + 0.35 * 1296 ≈ -194`, which equals `HORIZON_Y` (you may need to tune `HORIZON_RATIO` if your replacement image has a different horizon).
+- The sprite center is at `y = 0`, so the scaled background extends from `-BG_HEIGHT * bg_scale / 2` to `+BG_HEIGHT * bg_scale / 2`, i.e. `-360` to `+360`. The horizon is at `-360 + 0.35 * 720 = -108`, which equals `HORIZON_Y` (you may need to tune `HORIZON_RATIO` if your replacement image has a different horizon).
 - `z = -10` puts the background behind the player (`z = 0`).
 - We clone the same image `Handle` for every tile; Bevy shares the underlying texture, so this is cheap.
 - `tile_count` is computed from the initial window aspect ratio and stored in the `BackgroundStrip` resource so the update system can reuse it. It is not updated if the window is resized to a much wider aspect ratio later — that is a future polish item.

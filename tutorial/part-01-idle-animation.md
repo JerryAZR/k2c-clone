@@ -1,8 +1,6 @@
 # Part 1: The Idle Monarch — Sprite-Sheet Animation
 
-> **Time to read:** ~15 minutes
 > **New concepts:** `AssetServer` & `Handle`, `TextureAtlasLayout` & `TextureAtlas`, `Sprite`, `Timer` & `Time`, the `Plugin` trait, `ImagePlugin`
-> **Prerequisite:** A working Bevy 0.19 project that opens a window and spawns a `Camera2d` (the minimal `main.rs` we start from).
 
 ---
 
