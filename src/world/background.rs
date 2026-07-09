@@ -53,16 +53,14 @@ pub fn spawn_background(
 
     let image = asset_server.load("Summer2.png");
 
-    let half = (tile_count as f32 - 1.0) / 2.0;
-    for i in 0..tile_count {
-        let x = (i as f32 - half) * tile_width;
+    for _ in 0..tile_count {
         commands.spawn((
             BackgroundTile,
             Sprite {
                 image: image.clone(),
                 ..default()
             },
-            Transform::from_xyz(x, 0.0, -10.0).with_scale(Vec3::splat(bg_scale)),
+            Transform::from_xyz(0.0, 0.0, -10.0).with_scale(Vec3::splat(bg_scale)),
         ));
     }
 }

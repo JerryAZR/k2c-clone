@@ -182,16 +182,14 @@ pub fn spawn_background(
 
     let image = asset_server.load("Summer2.png");
 
-    let half = (tile_count as f32 - 1.0) / 2.0;
-    for i in 0..tile_count {
-        let x = (i as f32 - half) * tile_width;
+    for _ in 0..tile_count {
         commands.spawn((
             BackgroundTile,
             Sprite {
                 image: image.clone(),
                 ..default()
             },
-            Transform::from_xyz(x, 0.0, -10.0)
+            Transform::from_xyz(0.0, 0.0, -10.0)
                 .with_scale(Vec3::splat(bg_scale)),
         ));
     }
@@ -207,9 +205,11 @@ bevy = "0.19.0"
 
 A few notes on the spawn code:
 
+- The tiles are all spawned at `x = 0.0`. Their initial horizontal positions do not matter, because `update_background` runs every frame and snaps them to the correct grid slots before the first render.
+
 - The replacement image is `Summer2.png` (2304×1296 in this example). Update `BG_WIDTH` and `BG_HEIGHT` if your replacement asset has different dimensions.
 - The sprite center is at `y = 0`, so the scaled background extends from `-BG_HEIGHT * bg_scale / 2` to `+BG_HEIGHT * bg_scale / 2`, i.e. `-360` to `+360`. The horizon is at `-360 + 0.35 * 720 = -108`, which equals `HORIZON_Y` (you may need to tune `HORIZON_RATIO` if your replacement image has a different horizon).
-- `z = -10` puts the background behind the player (`z = 0`).
+- `z = -10` puts the background behind the player (`z = 0`). It is a large enough negative value that later entities — villagers, coins, enemies — will almost certainly sit at `z >= 0`, so the background stays behind everything by default.
 - We clone the same image `Handle` for every tile; Bevy shares the underlying texture, so this is cheap.
 - `tile_count` is computed from the initial window aspect ratio and stored in the `BackgroundStrip` resource so the update system can reuse it. It is not updated if the window is resized to a much wider aspect ratio later — that is a future polish item.
 - The image must be **horizontally seamless** — the right edge must match the left edge — otherwise the snap-to-grid tiling will show visible seams between tiles.
