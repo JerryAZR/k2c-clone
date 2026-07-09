@@ -44,7 +44,7 @@ We use `FixedVertical` so that our world coordinates (and the ground line) are s
 
 ### `Resource`
 
-A `Resource` is a singleton-like component stored directly on the `World` rather than on an entity. It is useful for global configuration that needs to be read by multiple systems. We’ll use a `BackgroundStrip` resource to store the computed tile count.
+A `Resource` is a global singleton stored on the `World`, accessible through `Res<T>` or `ResMut<T>`. It is useful for data that many systems need but that does not belong to a specific game entity. In Bevy 0.19, the `Resource` trait requires `Component`, so resources are components under the hood; they are stored on a special resource entity (one per resource type) and accessed as world-level singletons rather than being attached to a normal game entity. We’ll use a `BackgroundStrip` resource to store the computed tile count.
 
 ### Marker components
 
