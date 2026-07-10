@@ -1,14 +1,16 @@
 //! The player domain: the controllable monarch.
 //!
-//! CP1 (this checkpoint) delivers only idle animation:
-//! - spawn the monarch with the `Idle.png` sprite sheet,
-//! - build a `TextureAtlasLayout` for the 128×128 frames,
-//! - cycle frames on a timer (via the shared `AnimationPlugin`).
+//! CP1 delivered the idle animation. CP3 (this checkpoint) adds movement and
+//! camera follow:
+//! - the monarch moves left/right in `FixedUpdate`,
+//! - input is gathered in `Update` through a logical `PlayerInput` resource,
+//! - the camera follows her smoothly with a lerp.
 //!
-//! Movement (CP3), the walk/run sheets (CP4), and the follow camera (CP3)
-//! are added in later checkpoints.
+//! The walk/run sheet swap arrives in CP4.
 
+pub mod camera;
 pub mod components;
+pub mod movement;
 
 use crate::animation::SpriteAnimation;
 use crate::world::HORIZON_Y;
@@ -29,7 +31,10 @@ pub struct PlayerPlugin;
 
 impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, spawn_player);
+        app.init_resource::<movement::PlayerInput>()
+            .add_systems(Startup, spawn_player)
+            .add_systems(Update, (movement::gather_input, camera::follow_camera))
+            .add_systems(FixedUpdate, movement::apply_movement);
     }
 }
 
