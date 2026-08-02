@@ -5,3 +5,8 @@ edition = "2024"
 
 [dependencies]
 bevy = "0.19.0"
+
+[lints.clippy]
+# Bevy system parameters routinely exceed the default type-complexity
+# threshold; this lint is noise for an ECS codebase.
+type_complexity = "allow"
