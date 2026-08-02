@@ -1,4 +1,4 @@
-# Part 3: The Riding Monarch — Movement and Camera Follow
+# Part 3: The Moving Monarch — Movement and Camera Follow
 
 > **New concepts:** `ButtonInput`, `Time<Fixed>` & `FixedUpdate`, `Single`, `Sprite.flip_x`
 
@@ -19,7 +19,7 @@ By the end of this part:
 - She flips to face the direction she is moving.
 - The camera follows her horizontally with a smooth lerp.
 
-This gives us the first interactive piece of gameplay: the player can ride across the kingdom. The walk/run animation sheet swap arrives in Part 4.
+This gives us the first interactive piece of gameplay: the player can move across the kingdom. The walk/run animation sheet swap arrives in Part 4.
 
 ---
 

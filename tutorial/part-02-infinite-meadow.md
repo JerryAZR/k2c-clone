@@ -6,7 +6,7 @@
 
 ## Recap
 
-In Part 1 we rendered the monarch and gave her a looping idle animation using a generic `AnimationPlugin`. The camera was a default `Camera2d` at the origin, the player stood at the origin, and the world was empty. In this part we add the meadow she rides through.
+In Part 1 we rendered the monarch and gave her a looping idle animation using a generic `AnimationPlugin`. The camera was a default `Camera2d` at the origin, the player stood at the origin, and the world was empty. In this part we add the meadow she walks through.
 
 ---
 
@@ -280,4 +280,4 @@ The camera is still static, so the infinite tiling is not visibly tested yet —
 - Instead of a complex wrap/recycle algorithm, we snap all tiles to a grid centered on the camera each frame; the seamless texture makes the jump invisible.
 - The monarch is placed at `HORIZON_Y + half sprite height`, so her feet rest on the ground.
 
-In the next part, we’ll make the monarch ride: reading input in `FixedUpdate`, switching between idle/walk/run states, and making the camera follow her with a lerp.
+In the next part, we’ll make the monarch move: reading input in `FixedUpdate`, switching between idle/walk/run states, and making the camera follow her with a lerp.
